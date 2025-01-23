@@ -1,0 +1,15 @@
+The issue can often be resolved by ensuring the percentage value within the `calc()` function is based on a container with a defined width, rather than the viewport directly.  If possible, avoid complex calculations within media queries and break them down into simpler steps. Here's one way to modify the CSS to improve behavior:
+
+```css
+@media (max-width: 768px) {
+  #container {
+    width: 50%; /* Ensure the container has a defined width */
+  }
+  #myElement {
+    width: calc(100% - 10px); /* Calculate width relative to the container */
+    box-sizing: border-box; /* Consider border-box to manage the effect of padding and border on the final width*/
+  }
+}
+```
+
+By using this approach, you are making sure the calculation is relative to the container, rather than the viewport, thus avoiding ambiguities in some browsers.  If possible, aim for simpler calculations, and test thoroughly in multiple browsers.
